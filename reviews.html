@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review Tab</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f9;
+        }
+
+        /* Review section styling */
+        .review-section {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .review-section h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* Input form styling */
+        .review-form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .review-form textarea {
+            resize: none;
+            height: 100px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .review-form button {
+            padding: 10px;
+            font-size: 16px;
+            background-color: #6610f2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .review-form button:hover {
+            background-color: #4e0dbf;
+        }
+
+        /* Display reviews */
+        .review-list {
+            margin-top: 20px;
+        }
+
+        .review-item {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #6610f2;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="review-section">
+        <h1>Recent ghibli trend</h1>
+        <h2>Your views matters</h2>
+        <form class="review-form" id="reviewForm">
+            <textarea id="reviewInput" placeholder="Write your review here..." required></textarea>
+            <button type="submit">Submit</button>
+        </form>
+
+        <div class="review-list" id="reviewList">
+            <!-- User reviews will appear here -->
+        </div>
+    </div>
+
+    <script>
+        // JavaScript to handle review submissions
+        const reviewForm = document.getElementById('reviewForm');
+        const reviewInput = document.getElementById('reviewInput');
+        const reviewList = document.getElementById('reviewList');
+
+        reviewForm.addEventListener('submit', function (event) {
+            event.preventDefault(); // Prevent form from refreshing the page
+
+            // Get the review text
+            const reviewText = reviewInput.value;
+
+            // Create a new review item
+            const reviewItem = document.createElement('div');
+            reviewItem.classList.add('review-item');
+            reviewItem.textContent = reviewText;
+
+            // Add the review item to the list
+            reviewList.appendChild(reviewItem);
+
+            // Clear the input field
+            reviewInput.value = '';
+        });
+    </script>
+</body>
+</html>
